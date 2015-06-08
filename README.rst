@@ -5,7 +5,14 @@
 The pgraph provides the graph of Python dependencies,
 powered by `Linkdraw <https://github.com/mtoshi/linkdraw/wiki>`_, `Pyramid <http://docs.pylonsproject.org/en/latest/docs/pyramid.html>`_, and `py-deps <https://github.com/mkouhei/py-deps>`_.
 
+Status
+======
 
+.. image:: https://img.shields.io/pypi/v/pgraph.svg
+   :target: https://pypi.python.org/pypi/pgraph
+.. image:: https://readthedocs.org/projects/pgraph/badge/?version=latest
+   :target: https://readthedocs.org/projects/pgraph/?badge=latest
+   :alt: Documentation Status
 
 How to run things locally
 =========================
