@@ -1,0 +1,3 @@
+[submodule "pgraph/static/linkdraw"]
+	path = pgraph/static/linkdraw
+	url = git@github.com:mtoshi/linkdraw.git

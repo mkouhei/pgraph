@@ -1,0 +1,29 @@
+<div metal:use-macro="view.layout">
+  <div metal:fill-slot="content" tal:switch="linkdraw">
+    <div class="row" tal:case="False">
+      <h3>${pkg_name} package is broken.</h3>
+    </div>
+
+    <div class="row" tal:case="default">
+      <h2>Graph of &quot;${pkg_name}&quot;</h2>
+      <div class="col-md-2">
+        <ul class="list-unstyled">
+          <li tal:condition="base_pkg.link">
+            <i class="glyphicon glyphicon-home icon-muted"></i>
+            <a tal:attributes="href base_pkg.link" tal:content="base_pkg.name"></a>
+          </li>
+          <li tal:condition="base_pkg.version">
+            <i class="glyphicon glyphicon-tag icon-muted"></i>
+            <span tal:content="base_pkg.version"></span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-12">
+        <div class="content">
+          <div id="graph"></div>
+          <script src="/linkdraw/config/${pkg_name}"></script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

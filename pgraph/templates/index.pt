@@ -1,0 +1,18 @@
+<metal:block use-macro="view.layout">
+  <div metal:fill-slot="content">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-10">
+        <div class="content">
+          <h1><span class="font-semi-bold">pgraph</span></h1>
+          <p class="lead">Welcome to <span class="font-normal">${project}</span>, an&nbsp;graph of Python packages dependencies&nbsp;.</p>
+
+            <form class="input-group col-md-8" action="/search">
+              <input name="pkg_name" type="text" class="form-control" placeholder="search packages" aria-describedby="search-addon"  />
+              <span class="input-group-addon" id="search-addon"><icon class="glyphicon glyphicon-search"/></span>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</metal:block>

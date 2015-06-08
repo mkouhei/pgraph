@@ -1,0 +1,13 @@
+$(function(){
+   $("#graph").linkDraw({
+     "configPath": "/api/linkdraw/${pkg_name}",
+     "positionPath": "positions/${pkg_name}.json", 
+     "positionWriter": "api/positions",
+     "positionSave": false,
+     //"zoom": false,
+     //"drag": false,
+     "width": 800,
+     "height": 600,
+     "interval":0
+   });
+});
