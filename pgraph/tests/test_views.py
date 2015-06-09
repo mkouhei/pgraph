@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """pgraph.tests module."""
+import os
 import unittest
 from pyramid import testing
 from webtest import TestApp
@@ -35,7 +36,7 @@ class GraphFunctionalTests(unittest.TestCase):
     def setUp(self):
         """Initialize."""
         from pgraph.run import main
-        settings = {}
+        settings = {'__file__': os.environ['CELERY_CONFIG']}
         app = main(settings)
         self.testapp = TestApp(app)
 

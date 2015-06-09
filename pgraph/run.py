@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 """pgraph packages."""
+import os
 from pyramid.config import Configurator
 
 
 # pylint: disable=unused-argument
 def main(global_config, **settings):
     """Pyramid WSGI application."""
+    os.environ['CELERY_CONFIG'] = global_config.get('__file__')
     config = Configurator(settings=settings)
     config.include('pyramid_chameleon')
     config.add_static_view('static', 'static', cache_max_age=3600)
