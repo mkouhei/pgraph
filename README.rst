@@ -49,7 +49,7 @@ How to run things locally
 
 6. Running celery worker.::
 
-     (venv)$ CELERY_CONFIG=/path/to/pgraph/development.ini celery -A pgraph.tasks.worker --loglevel=info
+     (venv)$ CELERY_CONFIG=/path/to/pgraph/development.ini celery -A pgraph.tasks worker --loglevel=info
 
 7. Running pserve from another venv session.::
 
