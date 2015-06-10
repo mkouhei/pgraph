@@ -38,6 +38,11 @@
           <ul class="nav navbar-nav">
             <li><a href="/" class="navbar-brand" title="${project}">${project}</a></li>
           </ul>
+          <form tal:condition="python: request.path is not '/'" class="input-group col-md-3 navbar-nav navbar-left" action="/search">
+            <input name="pkg_name" type="text" class="form-control" placeholder="search packages" aria-describedby="search-addon"  />
+            <span class="input-group-addon" id="search-addon"><icon class="glyphicon glyphicon-search"/></span>
+          </form>
+
           <ul class="nav navbar-nav navbar-right">          
             <li><a href="/graph/py-deps" title="example">Example</a></li>
           </ul>
