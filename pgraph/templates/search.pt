@@ -14,7 +14,7 @@
             </thead>
             <tbody>
               <tr tal:repeat="pkg results">
-                <td><a tal:attributes="href python:'/graph/' + pkg.name" tal:content="pkg.name"></a></td>
+                <td><a tal:attributes="href python:'/graph/%s/%s' % (pkg.name, pkg.version)" tal:content="pkg.name"></a></td>
                 <td>${pkg.version}</td>
                 <td>${pkg.summary}</td>
               </tr>

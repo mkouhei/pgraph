@@ -14,7 +14,7 @@ def main(global_config, **settings):
     config.add_route('index', '/')
     config.add_route('config', '/linkdraw/config/{pkg}')
     config.add_route('linkdraw', '/api/linkdraw/{pkg}')
-    config.add_route('graph', '/graph/{pkg}')
+    config.add_route('graph', '/graph/{pkg}/{version}')
     config.add_route('search', '/search')
     config.scan()
     return config.make_wsgi_app()

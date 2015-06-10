@@ -55,17 +55,11 @@ class GraphViews(object):
     def graph(self):
         """drawing graph."""
         pkg_name = self.request.matchdict['pkg']
+        version = self.request.matchdict['version']
+        link = 'https://pypi.python.org/pypi/%s/%s' % (pkg_name, version)
         self.meta['pkg_name'] = pkg_name
-        job = tasks.gen_dependency.delay(pkg_name)
-        while job.ready() is False:
-            time.sleep(1)
-        if job.successful():
-            self.meta['linkdraw'] = job.result.draw('linkdraw',
-                                                    decode_type='json')
-            self.meta['base_pkg'] = self.meta['linkdraw']['nodes'][0]
-        else:
-            self.meta['linkdraw'] = False
-            self.meta['base_pkg'] = {'link': None, 'version': None}
+        self.meta['base_pkg'] = dict(version=version,
+                                     link=link)
         return self.meta
 
     @view_config(route_name='search', renderer='templates/search.pt')

@@ -52,10 +52,18 @@ class GraphFunctionalTests(unittest.TestCase):
 
     def test_graph(self):
         """unit test of graph."""
-        res = self.testapp.get('/graph/py-deps', status=200)
+        res = self.testapp.get('/graph/py-deps/0.4.5', status=200)
         self.assertIn(b'Graph of &quot;py-deps&quot;', res.body)
 
-    def test_graph_fail(self):
+    def test_path_error(self):
         """unit test of graph."""
-        res = self.testapp.get('/graph/foo', status=200)
-        self.assertIn(b'foo package is broken.', res.body)
+        res = self.testapp.get('/graph/foo', status=404)
+        self.assertIn(b'404 Not Found', res.body)
+
+    def test_graph_fail(self):
+        """unit test of graph.
+
+        But linkdraw do nothing when the config json is null.
+        """
+        res = self.testapp.get('/graph/foo/.1', status=200)
+        self.assertIn(b'Graph of &quot;foo&quot;', res.body)
