@@ -1,13 +1,25 @@
 <div metal:use-macro="view.layout">
   <div metal:fill-slot="content">
     <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-10">
-        <div class="content">
-          <h2>Search &quot;${pkg_name}&quot; on PyPI</h2>
-          <p tal:repeat="pkg results">
-            <a tal:attributes="href python:'/graph/' + pkg" tal:content="pkg"></a>
-          </p>
+      <div class="content">
+        <h2>Search &quot;${pkg_name}&quot; on PyPI</h2>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>package name</th>
+                <th>version</th>
+                <th>summary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr tal:repeat="pkg results">
+                <td><a tal:attributes="href python:'/graph/' + pkg.name" tal:content="pkg.name"></a></td>
+                <td>${pkg.version}</td>
+                <td>${pkg.summary}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

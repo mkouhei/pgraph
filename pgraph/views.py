@@ -77,8 +77,7 @@ class GraphViews(object):
         while job.ready() is False:
             time.sleep(1)
         if job.successful():
-            self.meta['results'] = list(set([pkg.get('name')
-                                             for pkg in job.result]))
+            self.meta['results'] = job.result
         else:
             self.meta['results'] = False
         return self.meta
