@@ -12,6 +12,10 @@
             <i class="glyphicon glyphicon-tag icon-muted"></i>
             <span tal:content="base_pkg.version"></span>
           </li>
+          <li>
+            <i class="glyphicon glyphicon-open-file"></i>
+            <a href="/api/linkdraw/${pkg_name}/${base_pkg.version}">Linkdraw config</a>
+          </li>
         </ul>
       </div>
       <div class="col-md-12">
