@@ -34,9 +34,9 @@ APP = Celery('tasks',
 
 
 @APP.task
-def gen_dependency(pkg_name):
+def gen_dependency(pkg_name, version):
     """Generate dependencies."""
-    return Package(pkg_name)
+    return Package(pkg_name, version=version)
 
 
 @APP.task

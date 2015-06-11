@@ -61,7 +61,7 @@ requires = ['pyramid',
             'waitress',
             'pyramid_celery',
             'webtest',
-            'py-deps']
+            'py-deps>=0.4.6']
 extras_require = {
     'reST': ['Sphinx']}
 if os.environ.get('READTHEDOCS', None):

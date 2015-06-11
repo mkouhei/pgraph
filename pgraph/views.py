@@ -34,14 +34,16 @@ class GraphViews(object):
         self.request.response.content_type = 'application/javascript'
         pkg_name = self.request.matchdict['pkg']
         self.meta['pkg_name'] = pkg_name
+        self.meta['version'] = self.request.matchdict['version']
         return self.meta
 
     @view_config(route_name='linkdraw', renderer='json')
     def linkdraw(self):
         """Linkdraw data."""
         pkg_name = self.request.matchdict['pkg']
+        version = self.request.matchdict['version']
         self.meta['pkg_name'] = pkg_name
-        job = tasks.gen_dependency.delay(pkg_name)
+        job = tasks.gen_dependency.delay(pkg_name, version)
         while job.ready() is False:
             time.sleep(1)
         if job.successful():

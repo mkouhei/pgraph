@@ -1,6 +1,6 @@
 $(function(){
    $("#graph").linkDraw({
-     "configPath": "/api/linkdraw/${pkg_name}",
+     "configPath": "/api/linkdraw/${pkg_name}/${version}",
      "positionPath": "positions/${pkg_name}.json", 
      "positionWriter": "api/positions",
      "positionSave": false,
