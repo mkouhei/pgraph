@@ -63,14 +63,18 @@ requires = ['pyramid',
             'webtest',
             'py-deps>=0.4.6']
 extras_require = {
-    'reST': ['Sphinx']}
+    'reST': ['Sphinx'],
+    'heroku': ['CherryPy',
+               'PasteScript',
+               'PasteDeploy']}
 if os.environ.get('READTHEDOCS', None):
     extras_require['reST'].append('recommonmark')
 
 with open('requirements.txt', 'w') as fobj:
     fobj.write('\n'.join(requires))
 with open('extras_requirement.txt', 'w') as fobj:
-    fobj.write('\n'.join(extras_require.get('reST')))
+    fobj.write('\n'.join(extras_require.get('reST') +
+                         extras_require.get('heroku')))
 
 setup(name=__project__,
       version=__version__,
