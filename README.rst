@@ -8,6 +8,10 @@ powered by `Linkdraw <https://github.com/mtoshi/linkdraw/wiki>`_, `Pyramid <http
 Status
 ======
 
+.. image:: https://secure.travis-ci.org/mkouhei/pgraph.png?branch=master
+   :target: http://travis-ci.org/mkouhei/pgraph
+.. image:: https://coveralls.io/repos/mkouhei/pgraph/badge.png?branch=master
+   :target: https://coveralls.io/r/mkouhei/pgraph?branch=master
 .. image:: https://img.shields.io/pypi/v/pgraph.svg
    :target: https://pypi.python.org/pypi/pgraph
 .. image:: https://readthedocs.org/projects/pgraph/badge/?version=latest
