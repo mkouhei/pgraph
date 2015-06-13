@@ -2,8 +2,10 @@
 """pgraph.tests module."""
 import os
 import unittest
+import json
 from pyramid import testing
 from webtest import TestApp
+from mock import patch
 
 
 class ViewTests(unittest.TestCase):
@@ -45,7 +47,9 @@ class GraphFunctionalTests(unittest.TestCase):
         res = self.testapp.get('/', status=200)
         self.assertIn(b'Welcome', res.body)
 
-    def test_search(self):
+    # pylint: disable=unused-argument
+    @patch('pgraph.tasks.search.delay')
+    def test_search(self, _mock):
         """unit test of search."""
         res = self.testapp.get('/search?pkg_name=foo', status=200)
         self.assertIn(b'Search &quot;foo&quot; on PyPI', res.body)
@@ -67,3 +71,20 @@ class GraphFunctionalTests(unittest.TestCase):
         """
         res = self.testapp.get('/graph/foo/.1', status=200)
         self.assertIn(b'Graph of &quot;foo&quot;', res.body)
+
+    @patch('pgraph.tasks.gen_dependency.delay')
+    def test_api(self, _mock):
+        """unit test of graph."""
+        job_mock = _mock.return_value
+        with open('pgraph/tests/data/py-deps.linkdraw') as fobj:
+            data = json.loads(fobj.read())
+            job_mock.result.draw.return_value = data
+        res = self.testapp.get('/api/linkdraw/py-deps/0.2.0', status=200)
+        self.assertDictEqual(data, json.loads(res.body.decode('utf-8')))
+
+    def test_config(self):
+        """unit test of config."""
+        res = self.testapp.get('/linkdraw/config/py-deps/0.2.0', status=200)
+        with open('pgraph/tests/data/config.js') as fobj:
+            data = fobj.read()
+        self.assertEqual(data.encode('utf-8'), res.body)
