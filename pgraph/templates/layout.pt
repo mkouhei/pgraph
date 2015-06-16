@@ -45,7 +45,7 @@
           </form>
 
           <ul class="nav navbar-nav navbar-right">          
-            <li><a href="/graph/py-deps/${version}" title="example">Example</a></li>
+            <li><a href="/graph/pgraph/${version}" title="example">Example</a></li>
           </ul>
         </nav>
     </div>
