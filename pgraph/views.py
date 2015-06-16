@@ -68,12 +68,28 @@ class GraphViews(object):
     def search(self):
         """search package."""
         pkg_name = self.request.GET.get('pkg_name')
+        task_id = self.request.GET.get('task')
         self.meta['pkg_name'] = pkg_name
-        job = tasks.search.delay(pkg_name)
-        while job.ready() is False:
-            time.sleep(1)
-        if job.successful():
-            self.meta['results'] = job.result
+        if task_id:
+            job = tasks.result(task_id)
+            self._check_result(job)
         else:
-            self.meta['results'] = False
+            job = tasks.search.apply_async((pkg_name,))
+            self._check_result(job)
         return self.meta
+
+    def _check_result(self, job):
+        """Check job result."""
+        if job.ready() is False:
+            self.meta['ready'] = False
+            self.meta['successful'] = False
+            self.meta['task_id'] = job.task_id
+        else:
+            if job.successful():
+                self.meta['ready'] = True
+                self.meta['successful'] = True
+                self.meta['results'] = job.result
+            else:
+                self.meta['ready'] = True
+                self.meta['successful'] = False
+                self.meta['task_id'] = job.task_id

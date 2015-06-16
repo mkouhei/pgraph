@@ -43,3 +43,9 @@ def gen_dependency(pkg_name, version):
 def search(pkg_name):
     """Search package."""
     return Package.search(pkg_name)
+
+
+def result(task_id):
+    """Retrieve the result of task."""
+    # pylint: disable=too-many-function-args
+    return APP.AsyncResult(task_id)
