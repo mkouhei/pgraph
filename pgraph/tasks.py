@@ -14,7 +14,7 @@ else:
 def celery_config():
     """Load Celery configuration."""
     if os.environ.get('CELERY_CONFIG') is None:
-        sys.stderr.write("Missing env variable CELERY_CONFIG")
+        sys.stderr.write("Missing env variable CELERY_CONFIG\n\n")
         sys.exit(2)
 
     config_file = os.path.abspath(os.environ['CELERY_CONFIG'])
