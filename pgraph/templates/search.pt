@@ -3,28 +3,23 @@
     <div class="row">
       <div class="content">
         <h2>Search &quot;${pkg_name}&quot; on PyPI</h2>
-        <div class="table-responsive" tal:switch="ready">
-          <div tal:case="True">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>package name</th>
-                  <th>version</th>
-                  <th>summary</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr tal:repeat="pkg results">
-                  <td><a tal:attributes="href python:'/graph/%s/%s' % (pkg.name, pkg.version)" tal:content="pkg.name"></a></td>
-                  <td>${pkg.version}</td>
-                  <td>${pkg.summary}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div tal:case="False">
-            <h3><a tal:attributes="href python:'/search?pkg_name=%s&task=%s' % (pkg_name, task_id)">Search results</a></h3>
-          </div>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>package name</th>
+                <th>version</th>
+                <th>summary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr tal:repeat="pkg results">
+                <td><a tal:attributes="href python:'/graph/%s/%s' % (pkg.name, pkg.version)" tal:content="pkg.name"></a></td>
+                <td>${pkg.version}</td>
+                <td>${pkg.summary}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

@@ -48,7 +48,7 @@ class GraphFunctionalTests(unittest.TestCase):
         self.assertIn(b'Welcome', res.body)
 
     # pylint: disable=unused-argument
-    @patch('pgraph.tasks.search.apply_async')
+    @patch('pgraph.tasks.search')
     def test_search(self, _mock):
         """unit test of search."""
         res = self.testapp.get('/search?pkg_name=foo', status=200)

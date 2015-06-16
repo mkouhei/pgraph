@@ -39,7 +39,6 @@ def gen_dependency(pkg_name, version):
     return Package(pkg_name, version=version)
 
 
-@APP.task
 def search(pkg_name):
     """Search package."""
     return Package.search(pkg_name)
