@@ -3,7 +3,7 @@
 import os
 import sys
 from celery import Celery
-from py_deps import Package
+from py_deps import Package, Container
 if sys.version_info < (3, 0):
     # pylint: disable=import-error
     import ConfigParser as configparser
@@ -37,6 +37,14 @@ APP = Celery('tasks',
 def gen_dependency(pkg_name, version):
     """Generate dependencies."""
     return Package(pkg_name, version=version)
+
+
+def read_cache(pkg_name, version):
+    """Check cache and read data."""
+    if Container().read_data((pkg_name, version)):
+        return Package(pkg_name, version=version)
+    else:
+        return
 
 
 def search(pkg_name):

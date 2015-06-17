@@ -43,15 +43,22 @@ class GraphViews(object):
         pkg_name = self.request.matchdict['pkg']
         version = self.request.matchdict['version']
         self.meta['pkg_name'] = pkg_name
-        job = tasks.gen_dependency.delay(pkg_name, version)
-        while job.ready() is False:
-            time.sleep(1)
-        if job.successful():
-            result = job.result.draw('linkdraw',
-                                     decode_type='json',
-                                     disable_time=True,
-                                     disable_descr=True)
-            return result
+        data = tasks.read_cache(pkg_name, version)
+        if data:
+            result = data.draw('linkdraw',
+                               decode_type='json',
+                               disable_time=True,
+                               disable_descr=True)
+        else:
+            job = tasks.gen_dependency.delay(pkg_name, version)
+            while job.ready() is False:
+                time.sleep(1)
+            if job.successful():
+                result = job.result.draw('linkdraw',
+                                         decode_type='json',
+                                         disable_time=True,
+                                         disable_descr=True)
+        return result
 
     @view_config(route_name='graph', renderer='templates/graph.pt')
     def graph(self):
