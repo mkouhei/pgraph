@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """pgraph.views module."""
-import time
 from pyramid.renderers import get_renderer
 from pyramid.view import view_config
 from pgraph import __project__, __version__, __author__, __repo__, READTHEDOCS
@@ -42,6 +41,7 @@ class GraphViews(object):
         """Linkdraw data."""
         pkg_name = self.request.matchdict['pkg']
         version = self.request.matchdict['version']
+        task_id = self.request.GET.get('task')
         self.meta['pkg_name'] = pkg_name
         data = tasks.read_cache(pkg_name, version)
         if data:
@@ -49,15 +49,27 @@ class GraphViews(object):
                                decode_type='json',
                                disable_time=True,
                                disable_descr=True)
+            result['status'] = 200
         else:
-            job = tasks.gen_dependency.delay(pkg_name, version)
-            while job.ready() is False:
-                time.sleep(1)
-            if job.successful():
-                result = job.result.draw('linkdraw',
-                                         decode_type='json',
-                                         disable_time=True,
-                                         disable_descr=True)
+            if task_id:
+                job = tasks.result(task_id)
+            else:
+                job = tasks.gen_dependency.delay(pkg_name, version)
+            if job.ready() is False:
+                result = {'status': 202,
+                          'descr': 'Accepted',
+                          'task': job.task_id}
+            else:
+                if job.successful():
+                    result = job.result.draw('linkdraw',
+                                             decode_type='json',
+                                             disable_time=True,
+                                             disable_descr=True)
+                    result['status'] = 200
+                else:
+                    result = {'status': 404,
+                              'descr': 'Failed parsing dependencies.',
+                              'task': job.task_id}
         return result
 
     @view_config(route_name='graph', renderer='templates/graph.pt')
@@ -78,19 +90,3 @@ class GraphViews(object):
         self.meta['pkg_name'] = pkg_name
         self.meta['results'] = tasks.search(pkg_name)
         return self.meta
-
-    def _check_result(self, job):
-        """Check job result."""
-        if job.ready() is False:
-            self.meta['ready'] = False
-            self.meta['successful'] = False
-            self.meta['task_id'] = job.task_id
-        else:
-            if job.successful():
-                self.meta['ready'] = True
-                self.meta['successful'] = True
-                self.meta['results'] = job.result
-            else:
-                self.meta['ready'] = True
-                self.meta['successful'] = False
-                self.meta['task_id'] = job.task_id
