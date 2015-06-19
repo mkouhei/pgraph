@@ -49,7 +49,7 @@ How to run things locally
      (venv)$ cd /path/to/pgraph
      (venv)$ python setup.py install
      or
-     (venv)$ pip install pgraph
+     (venv)$ pip install --egg pgraph
 
 6. Running celery worker.::
 

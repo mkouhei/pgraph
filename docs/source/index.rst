@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
 
    README
+   heroku
 
 .. toctree::
    :maxdepth: 1
