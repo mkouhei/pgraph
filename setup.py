@@ -63,18 +63,19 @@ requires = ['pyramid',
             'webtest',
             'mock',
             'py-deps>=0.4.6']
+if os.path.isdir('/app/.heroku/python'):
+    requires += ['CherryPy',
+                 'PasteScript',
+                 'PasteDeploy',
+                 'newrelic']
 
 extras_require = {
-    'reST': ['Sphinx'],
-    'heroku': ['CherryPy',
-               'PasteScript',
-               'PasteDeploy']}
+    'reST': ['Sphinx']}
 if os.environ.get('READTHEDOCS', None):
     extras_require['reST'].append('recommonmark')
 
 with open('requirements.txt', 'w') as fobj:
-    fobj.write('\n'.join(requires +
-                         extras_require.get('heroku')))
+    fobj.write('\n'.join(requires))
 with open('extras_requirement.txt', 'w') as fobj:
     fobj.write('\n'.join(extras_require.get('reST')))
 
