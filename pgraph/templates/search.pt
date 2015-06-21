@@ -1,7 +1,7 @@
 <div metal:use-macro="view.layout">
   <div metal:fill-slot="content">
     <div class="row">
-      <div class="content">
+      <div class="col-md-10">
         <h2>Search &quot;${pkg_name}&quot; on PyPI</h2>
         <div class="table-responsive">
           <table class="table table-striped">

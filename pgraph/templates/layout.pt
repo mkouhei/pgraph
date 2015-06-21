@@ -50,28 +50,25 @@
         </nav>
     </div>
     </header>
-
+    <div class="col-md-2" id="side-bar">
+    </div>
     <div class="container">
       <div metal:define-slot="content"></div>
-
       <hr/>
       
       <footer class="bs-docs-footer">
-        <div class="container">
-          <div class="copyright text-center">
-            <ul class="bs-docs-footer-links text-muted list-inline">
-              <li>Currently <a href="https://pypi.python.org/pypi/pgraph/">${project} ${version}</a></li>
-              <li><a href="${repo}" title="Git repo">Git repo</a></li>
-              <li><a href="${repo}/issues" title="Issues">Issues</a></li>
-              <li><a href="${docs}" title="docs">Docs</a></li>
-            </ul>
-            <p>&copy; Copyright 2015, ${author}.
+        <div class="copyright text-center">
+          <ul class="bs-docs-footer-links text-muted list-inline">
+            <li>Currently <a href="https://pypi.python.org/pypi/pgraph/">${project} ${version}</a></li>
+            <li><a href="${repo}" title="Git repo">Git repo</a></li>
+            <li><a href="${repo}/issues" title="Issues">Issues</a></li>
+            <li><a href="${docs}" title="docs">Docs</a></li>
+          </ul>
+          <p>&copy; Copyright 2015, ${author}.
             Powered by <a href="https://github.com/mkouhei/py-deps">py-deps</a>, <a href="https://github.com/mtoshi/linkdraw/wiki">Linkdraw</a>, <a href="http://www.celeryproject.org/">Celery</a> and <a href="http://docs.pylonsproject.org/en/latest/docs/pyramid.html">Pyramid</a>.</p>
-          </div>
         </div>
       </footer>
     </div>
-    
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   </body>
 </html>
