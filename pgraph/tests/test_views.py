@@ -38,7 +38,7 @@ class GraphFunctionalTests(unittest.TestCase):
     def setUp(self):
         """Initialize."""
         from pgraph.run import main
-        settings = {'__file__': os.environ['CELERY_CONFIG']}
+        settings = {'__file__': os.environ['CONFIG_FILE']}
         app = main(settings)
         self.testapp = TestApp(app)
 

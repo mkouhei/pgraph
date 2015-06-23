@@ -61,8 +61,11 @@ requires = ['pyramid',
             'waitress',
             'pyramid_celery',
             'webtest',
-            'mock',
-            'py-deps>=0.4.6']
+            'mock']
+if hasattr(sys, 'pypy_version_info'):
+    requires.append('py-deps>=0.5.0')
+else:
+    requires.append('py-deps[memcache]>=0.5.0')
 if os.path.isdir('/app/.heroku/python'):
     requires += ['CherryPy',
                  'PasteScript',
