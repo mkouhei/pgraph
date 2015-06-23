@@ -62,12 +62,7 @@ requires = ['pyramid',
             'pyramid_celery',
             'webtest',
             'mock']
-if os.path.isdir('/app/.heroku/python'):
-    requires += ['CherryPy',
-                 'PasteScript',
-                 'PasteDeploy',
-                 'newrelic',
-                 'pylibmc']
+
 if hasattr(sys, 'pypy_version_info'):
     requires.append('py-deps>=0.5.0')
 else:
@@ -78,6 +73,7 @@ extras_require = {
     'heroku': ['CherryPy',
                'PasteScript',
                'PasteDeploy',
+               'pylibmc',
                'newrelic']}
 if os.environ.get('READTHEDOCS', None):
     extras_require['reST'].append('recommonmark')
