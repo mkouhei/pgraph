@@ -1,7 +1,4 @@
 #!/bin/sh -e
 
-python setup.py install
-pip install .[heroku]
-pip uninstall -y PasteDeploy
-pip install PasteDeploy
+python setup.py heroku
 python runapp.py
