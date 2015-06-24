@@ -2,7 +2,7 @@
 """pgraph.tasks module."""
 from celery import Celery
 from py_deps import cache, Package
-from pgraph.backend_config import (MEMCACHED_CACHE_NAME,
+from pgraph.backend_config import (CACHE_NAME,
                                    MEMCACHED_SERVERS,
                                    MEMCACHED_USERNAME,
                                    MEMCACHED_PASSWORD)
@@ -17,7 +17,7 @@ def gen_dependency(pkg_name, version):
     """Generate dependencies."""
     return Package(pkg_name,
                    version=version,
-                   cache_name=MEMCACHED_CACHE_NAME,
+                   cache_name=CACHE_NAME,
                    servers=MEMCACHED_SERVERS,
                    username=MEMCACHED_USERNAME,
                    password=MEMCACHED_PASSWORD)
@@ -25,14 +25,14 @@ def gen_dependency(pkg_name, version):
 
 def read_cache(pkg_name, version):
     """Check cache and read data."""
-    _cache = cache.backend(cache_name=MEMCACHED_CACHE_NAME,
+    _cache = cache.backend(cache_name=CACHE_NAME,
                            servers=MEMCACHED_SERVERS,
                            username=MEMCACHED_USERNAME,
                            password=MEMCACHED_PASSWORD)
     if _cache.read_data((pkg_name, version)):
         return Package(pkg_name,
                        version=version,
-                       cache_name=MEMCACHED_CACHE_NAME,
+                       cache_name=CACHE_NAME,
                        servers=MEMCACHED_SERVERS,
                        username=MEMCACHED_USERNAME,
                        password=MEMCACHED_PASSWORD)

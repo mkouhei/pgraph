@@ -50,5 +50,8 @@ else:
     __all__ = ['CELERY_RESULT_BACKEND',
                'BROKER_URL']
 
-# Memcached
-MEMCACHED_CACHE_NAME = CONF.get('cache', 'cache_name')
+# Pickle instead of Memcached
+CACHE_NAME = CONF.get('cache', 'cache_name')
+
+if not CACHE_NAME:
+    CACHE_NAME = 'pgraph.cache'
