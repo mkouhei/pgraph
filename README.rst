@@ -3,7 +3,7 @@
 =======================================================
 
 The pgraph provides the graph of Python dependencies,
-powered by `Linkdraw <https://github.com/mtoshi/linkdraw/wiki>`_, `Pyramid <http://docs.pylonsproject.org/en/latest/docs/pyramid.html>`_, and `py-deps <https://github.com/mkouhei/py-deps>`_.
+powered by `py-deps <https://github.com/mkouhei/py-deps>`_, `Linkdraw <https://github.com/mtoshi/linkdraw/wiki>`_, `Celery <http://www.celeryproject.org/>`_, `pylibmc <http://sendapatch.se/projects/pylibmc/>`_, and `Pyramid <http://docs.pylonsproject.org/en/latest/docs/pyramid.html>`_.
 
 Status
 ======
@@ -17,4 +17,9 @@ Status
 .. image:: https://readthedocs.org/projects/pgraph/badge/?version=latest
    :target: https://readthedocs.org/projects/pgraph/?badge=latest
    :alt: Documentation Status
+
+Demo
+====
+
+`Demo site <http://pgraph.herokuapp.com/>`_
 
