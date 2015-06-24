@@ -13,3 +13,4 @@ htmlcov
 *requirement*.txt
 .venv
 *.pickle
+*.cache
