@@ -1,6 +1,17 @@
 History
 =======
 
+0.3.0 (2015-06-24)
+------------------
+
+* Supports cache backend using memcached.
+* Adds side bar into layout.
+* Changes for Heroku.
+
+  * Updates setup configuration.
+  * Applies New Relic.
+  * Fixes Procfile and run.
+
 0.2.0 (2015-06-19)
 ------------------
 
