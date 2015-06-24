@@ -65,7 +65,7 @@
             <li><a href="${docs}" title="docs">Docs</a></li>
           </ul>
           <p>&copy; Copyright 2015, ${author}.
-            Powered by <a href="https://github.com/mkouhei/py-deps">py-deps</a>, <a href="https://github.com/mtoshi/linkdraw/wiki">Linkdraw</a>, <a href="http://www.celeryproject.org/">Celery</a> and <a href="http://docs.pylonsproject.org/en/latest/docs/pyramid.html">Pyramid</a>.</p>
+            Powered by <a href="https://github.com/mkouhei/py-deps">py-deps</a>, <a href="https://github.com/mtoshi/linkdraw/wiki">Linkdraw</a>, <a href="http://www.celeryproject.org/">Celery</a>, <a href="http://sendapatch.se/projects/pylibmc/">pylibmc</a> and <a href="http://docs.pylonsproject.org/en/latest/docs/pyramid.html">Pyramid</a>.</p>
         </div>
       </footer>
     </div>
