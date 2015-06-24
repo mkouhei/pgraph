@@ -46,6 +46,12 @@ How to run things locally
 
       (venv)$ easy_install pgraph
 
+   or
+
+   .. code-block:: shell
+
+      (venv)$ pip install --no-use-wheel pgraph
+
    .. warning::
       Not use ``pip install pgraph``. See also "`Known issue with the packages that depends on py-deps <http://py-deps.readthedocs.org/en/latest/README.html#known-issue-with-the-packages-that-depends-on-py-deps>`_".
 
@@ -54,7 +60,7 @@ How to run things locally
 
    .. code-block:: shell
 
-      (venv)$ CELERY_CONFIG=/path/to/pgraph/development.ini celery -A pgraph.tasks worker --loglevel=info
+      (venv)$ CONFIG_FILE=/path/to/pgraph/development.ini celery -A pgraph.tasks worker --loglevel=info
 
 7. Running pserve from another venv session.
 
