@@ -82,6 +82,8 @@ with open('requirements.txt', 'w') as fobj:
     fobj.write('\n'.join(requires))
 with open('extras_requirement.txt', 'w') as fobj:
     fobj.write('\n'.join(extras_require.get('reST')))
+with open('heroku_requirement.txt', 'w') as fobj:
+    fobj.write('\n'.join(extras_require.get('heroku')))
 
 setup(name=__project__,
       version=__version__,
