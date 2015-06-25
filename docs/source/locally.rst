@@ -38,7 +38,7 @@ How to run things locally
    .. code-block:: shell
 
       (venv)$ cd /path/to/pgraph
-      (venv)$ python setup.py install
+      (venv)$ python setup.py develop
 
    or
 
