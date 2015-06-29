@@ -15,13 +15,22 @@ Deploying app to Heroku
 
 3. Enabling plugins
 
-   a. CloudAMQP
+   a. Heroku Postgres
 
       .. code-block:: shell
 
-         $ heroku addons:create cloudamqp:lemur
+         $ heroku addons:create heroku-postgresql:hobby-dev
 
-      See also `CloudAMQP <https://devcenter.heroku.com/articles/cloudamqp>`_.
+      See also `Heroku Postgres <https://devcenter.heroku.com/articles/heroku-postgresql>`_
+
+      .. note::
+         If you will use CloudAMQP instead of Heroku Postgres, execute this.
+
+         .. code-block:: shell
+
+            $ heroku addons:create cloudamqp:lemur
+
+         See also `CloudAMQP <https://devcenter.heroku.com/articles/cloudamqp>`_.
 
    b. Memcached Cloud
 
@@ -55,14 +64,26 @@ Deploying app to Heroku
 Runnig test locally
 -------------------
 
-1. Installing RabbitMQ, Memcached.
+Use PostgreSQL as Celery backend
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Installing PostgreSQL, Memcached.
 
    .. code-block:: shell
 
-      $ sudo apt-get install rabbitmq-server memcached
+      $ sudo apt-get install postgresql memcached
+      $ sudo su - postgres
+      $ psql
+      postgres=# CREATE USER pgraph WITH PASSWORD 'passw0rd';
+      postgres=# CREATE DATABASE pgraph OWNER pgraph;
+      postgres=# \q
 
    .. note::
       You can use `yrmcds <http://cybozu.github.io/yrmcds/>`_ instead of memcached.
+   
+      .. code-block::
+   
+         $ sudo apt-get install yrmcds
 
 2. Cloning repository, and add remote repository.
 
@@ -82,7 +103,50 @@ Runnig test locally
 
    .. code-block:: shell
 
-      $ CONFIG_FILE=heroku.ini newrelic-admin run-program celery worker -c 1 --app=pgraph.tasks --loglevel=info
+      $ DATABSE_URL=postgres://pgraph:passw0rd@locahost:5432/pgraph CONFIG_FILE=heroku.ini newrelic-admin run-program celery worker -c 1 -A pgraph.tasks --loglevel=info
+
+5. Execute `run` script.
+
+   .. code-block:: shell
+
+      $ DATABASE_URL=postgres://pgraph:passw0rd@localhost:5432/pgraph MEMCACHEDCLOUD_SERVERS=127.0.0.1:11211 newrelic-admin run-program sh run
+
+
+Use RabbigMQ as Celery backend
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Installing RabbitMQ, Memcached.
+
+   .. code-block:: shell
+
+      $ sudo apt-get install rabbitmq-server memcached
+         
+   .. note::
+      You can use `yrmcds <http://cybozu.github.io/yrmcds/>`_ instead of memcached.
+   
+      .. code-block::
+   
+         $ sudo apt-get install yrmcds
+
+2. Cloning repository, and add remote repository.
+
+   .. code-block:: shell
+
+      $ git clone https://github.com/mkouhei/pgraph
+      $ cd pgraph
+
+3. Generate requirements.txt.
+
+   .. code-block:: shell
+
+      $ python setup.py --version
+      $ pip install --no-use-wheel -r requirements.txt -r heroku_requirements.txt
+
+4. Running celery worker.
+
+   .. code-block:: shell
+
+      $ CONFIG_FILE=heroku.ini newrelic-admin run-program celery worker -c 1 -A pgraph.tasks --loglevel=info
 
 5. Execute `run` script.
 
