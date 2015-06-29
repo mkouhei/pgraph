@@ -70,6 +70,7 @@ class GraphViews(object):
                     result = {'status': 404,
                               'descr': 'Failed parsing dependencies.',
                               'task': job.task_id}
+                    job.revoke()
         return result
 
     @view_config(route_name='graph', renderer='templates/graph.pt')
