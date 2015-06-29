@@ -73,6 +73,8 @@ extras_require = {
     'heroku': ['CherryPy',
                'PasteScript',
                'PasteDeploy',
+               'celery[sqlalchemy]',
+               'psycopg2',
                'pylibmc',
                'newrelic']}
 if os.environ.get('READTHEDOCS', None):

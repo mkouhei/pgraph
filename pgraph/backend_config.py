@@ -8,10 +8,16 @@ CONF, CONFIG_FILE = config.load()
 
 if os.path.basename(CONFIG_FILE) == 'heroku.ini':
     # Heroku
-    CELERY_RESULT_BACKEND = CONF.get('celery',
-                                     'celery_result_backend')
-    BROKER_URL = os.environ.get(CONF.get('celery',
-                                         'broker_url'))
+    if CONF.get('celery', 'celery_result_backend') == 'amqp':
+        # CloudAMQP
+        CELERY_RESULT_BACKEND = CONF.get('celery', 'celery_result_backend')
+        BROKER_URL = os.environ.get(CONF.get('celery', 'broker_url'))
+    else:
+        # RDB (PostgreSQL, etc.)
+        CELERY_RESULT_BACKEND = 'db+{0}'.format(
+            os.environ.get(CONF.get('celery', 'celery_result_backend')))
+        BROKER_URL = 'sqla+{0}'.format(
+            os.environ.get(CONF.get('celery', 'broker_url')))
     CELERY_SEND_EVENTS = CONF.getboolean('celery',
                                          'celery_send_events')
     CELERY_EVENT_QUEUE_EXPIRES = CONF.getint('celery',
