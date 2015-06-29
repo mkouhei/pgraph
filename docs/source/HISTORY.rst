@@ -1,6 +1,14 @@
 History
 =======
 
+0.4.0 (2015-06-29)
+------------------
+
+* Revokes when tasks.gen_depenency failed.
+* Fixes extras_requires for Heroku.
+* Changes Celery backend for Heroku to PostgreSQL in default.
+* Changes install requires pyramid_celery to celery.
+
 0.3.1 (2015-06-24)
 ------------------
 
