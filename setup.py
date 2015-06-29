@@ -73,7 +73,7 @@ extras_require = {
     'heroku': ['CherryPy',
                'PasteScript',
                'PasteDeploy',
-               'celery[sqlalchemy]',
+               'sqlalchemy',
                'psycopg2',
                'pylibmc',
                'newrelic']}
