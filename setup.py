@@ -59,7 +59,7 @@ requires = ['pyramid',
             'pyramid_chameleon',
             'pyramid_debugtoolbar',
             'waitress',
-            'pyramid_celery',
+            'celery',
             'webtest',
             'mock']
 
