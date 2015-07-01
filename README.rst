@@ -21,5 +21,5 @@ Status
 Demo
 ====
 
-`Demo site <http://pgraph.herokuapp.com/>`_
+`Demo site <http://pgraph.palmtb.net>`_
 
