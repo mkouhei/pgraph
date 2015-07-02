@@ -31,27 +31,40 @@
   </head>
 
   <body>
-    <header class="navbar navbar-static-top bs-docs-nav" role="banner">
-    <div class="container">
-      <div class="navbar-header">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                  data-target="#navbar-h" area-expanded="false">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/" class="navbar-brand" title="${project}">${project}</a>
         </div>
-        <nav class="navbar-collapse collapse">
+        
+        <div class="collapse navbar-collapse" id="navbar-h">
+          
+          <!-- main menu
           <ul class="nav navbar-nav">
-            <li><a href="/" class="navbar-brand" title="${project}">${project}</a></li>
-          </ul>
-          <form tal:condition="python: request.path is not '/'" class="input-group col-md-3 navbar-nav navbar-form navbar-left" action="/search">
+            <li><a></a></li>
+          </ul>-->
+          
+          <form tal:condition="python: request.path is not '/'"
+                class="navbar-form navbar-left" action="/search">
             <div class="form-group">
-              <input name="pkg_name" type="text" class="form-control" placeholder="search packages" aria-describedby="search-addon"  />
+              <input name="pkg_name" type="text" class="form-control"
+                     placeholder="search packages" aria-describedby="search-addon"  />
             </div>
             <button class="btn btn-default" id="search-addon"><icon class="glyphicon glyphicon-search"/></button>
           </form>
-
           <ul class="nav navbar-nav navbar-right">          
             <li><a href="/graph/pgraph/${version}" title="example">Example</a></li>
           </ul>
-        </nav>
-    </div>
-    </header>
+        </div>
+      </div>
+    </nav>
     <div class="col-md-2" id="side-bar">
     </div>
     <div class="container">
