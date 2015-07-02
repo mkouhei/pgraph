@@ -79,11 +79,9 @@ Use PostgreSQL as Celery backend
       postgres=# \q
 
    .. note::
-      You can use `yrmcds <http://cybozu.github.io/yrmcds/>`_ instead of memcached.
+      You can use `yrmcds <http://cybozu.github.io/yrmcds/>`_ instead of memcached.::
    
-      .. code-block::
-   
-         $ sudo apt-get install yrmcds
+        $ sudo apt-get install yrmcds
 
 2. Cloning repository, and add remote repository.
 
@@ -122,9 +120,7 @@ Use RabbigMQ as Celery backend
       $ sudo apt-get install rabbitmq-server memcached
          
    .. note::
-      You can use `yrmcds <http://cybozu.github.io/yrmcds/>`_ instead of memcached.
-   
-      .. code-block::
+      You can use `yrmcds <http://cybozu.github.io/yrmcds/>`_ instead of memcached.::
    
          $ sudo apt-get install yrmcds
 
