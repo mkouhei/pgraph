@@ -60,7 +60,7 @@
             <button class="btn btn-default" id="search-addon"><icon class="glyphicon glyphicon-search"/></button>
           </form>
           <ul class="nav navbar-nav navbar-right">          
-            <li><a href="/graph/pgraph/${version}" title="example">Example</a></li>
+            <li><a href="/example" title="example">Example</a></li>
           </ul>
         </div>
       </div>

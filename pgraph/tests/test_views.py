@@ -88,3 +88,8 @@ class GraphFunctionalTests(unittest.TestCase):
         with open('pgraph/tests/data/config.js') as fobj:
             data = fobj.read()
         self.assertEqual(data.encode('utf-8'), res.body)
+
+    def test_example(self):
+        """unit test of example redirect."""
+        res = self.testapp.get('/example', status=302)
+        self.assertTrue('/graph/pgraph/' in res.location)

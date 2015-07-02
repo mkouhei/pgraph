@@ -2,6 +2,7 @@
 """pgraph.views module."""
 from pyramid.renderers import get_renderer
 from pyramid.view import view_config
+import pyramid.httpexceptions as exc
 from pgraph import __project__, __version__, __author__, __repo__, READTHEDOCS
 from pgraph import tasks
 
@@ -91,3 +92,11 @@ class GraphViews(object):
         self.meta['pkg_name'] = pkg_name
         self.meta['results'] = tasks.search(pkg_name)
         return self.meta
+
+    @view_config(route_name='example', renderer='templates/graph.pt')
+    def example(self):
+        """drawing example graph."""
+        raise exc.HTTPFound(
+            self.request.route_url('graph',
+                                   pkg=self.meta.get('project'),
+                                   version=self.meta.get('version')))
