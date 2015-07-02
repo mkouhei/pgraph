@@ -1,6 +1,14 @@
 History
 =======
 
+0.4.1 (2015-07-03)
+------------------
+
+* Adds unit tests for backend_config, config modules.
+* Changes example to redirect to the graph of latest version of pgraph.
+* Fixes responsive navbar, search form.
+* Chagnes Demo site URL.
+
 0.4.0 (2015-06-29)
 ------------------
 
