@@ -17,7 +17,7 @@ def load():
 
     config_file = os.path.abspath(os.environ['CONFIG_FILE'])
     if not os.path.isfile(config_file):
-        sys.stderr.write("Can't read file: %s\n\n" % config_file)
+        sys.stderr.write("Can't read file: {0}\n\n".format(config_file))
         sys.exit(2)
 
     config = configparser.SafeConfigParser()

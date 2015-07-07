@@ -79,7 +79,7 @@ class GraphViews(object):
         """drawing graph."""
         pkg_name = self.request.matchdict['pkg']
         version = self.request.matchdict['version']
-        link = 'https://pypi.python.org/pypi/%s/%s' % (pkg_name, version)
+        link = 'https://pypi.python.org/pypi/{0}/{1}'.format(pkg_name, version)
         self.meta['pkg_name'] = pkg_name
         self.meta['base_pkg'] = dict(version=version,
                                      link=link)
