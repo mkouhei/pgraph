@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """pgraph.tasks module."""
 from celery import Celery
-from py_deps import cache, Package
+from py_deps import cache, Package, deps
 from pgraph.backend_config import (CACHE_NAME,
                                    MEMCACHED_SERVERS,
                                    MEMCACHED_USERNAME,
@@ -42,7 +42,7 @@ def read_cache(pkg_name, version):
 
 def search(pkg_name):
     """Search package."""
-    return Package.search(pkg_name)
+    return deps.search(pkg_name)
 
 
 def result(task_id):
