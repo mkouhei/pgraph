@@ -1,6 +1,13 @@
 History
 =======
 
+0.4.2 (2015-07-12)
+------------------
+
+* Changes pgraph.tasks.search (py-deps>=0.5.1).
+* Fixes `None` redundant second argument of `dict.get()`.
+* Fixes old-style string formatting.
+
 0.4.1 (2015-07-03)
 ------------------
 
