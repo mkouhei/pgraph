@@ -1,6 +1,11 @@
 History
 =======
 
+0.4.3 (2015-07-16)
+------------------
+
+* Change the color of the nodes to give gradation by the dependency depth (py-deps>=0.5.2)
+
 0.4.2 (2015-07-12)
 ------------------
 
