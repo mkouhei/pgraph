@@ -27,7 +27,7 @@ $(function(){
                 break;
             default:
                 console.log('error: not handling any errors.');
-                show_msg('not handing any errors.', "danger");
+                show_msg('not handling any errors.', "danger");
                 break;
             }
         });
