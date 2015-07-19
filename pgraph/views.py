@@ -3,6 +3,7 @@
 from pyramid.renderers import get_renderer
 from pyramid.view import view_config
 import pyramid.httpexceptions as exc
+from py_deps.exceptions import InvalidMetadata
 from pgraph import __project__, __version__, __author__, __repo__, READTHEDOCS
 from pgraph import tasks
 
@@ -62,11 +63,17 @@ class GraphViews(object):
                           'task': job.task_id}
             else:
                 if job.successful():
-                    result = job.result.draw('linkdraw',
-                                             decode_type='json',
-                                             disable_time=True,
-                                             disable_descr=True)
-                    result['status'] = 200
+                    try:
+                        result = job.result.draw('linkdraw',
+                                                 decode_type='json',
+                                                 disable_time=True,
+                                                 disable_descr=True)
+                        result['status'] = 200
+                    except InvalidMetadata:
+                        result = {'status': 500,
+                                  'descr': 'Invalid package metadata.',
+                                  'task': job.task_id}
+                        job.revoke()
                 else:
                     result = {'status': 404,
                               'descr': 'Failed parsing dependencies.',

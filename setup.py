@@ -66,9 +66,9 @@ if sys.version_info < (3, 3):
     requires.append('funcsigs')
 
 if hasattr(sys, 'pypy_version_info'):
-    requires.append('py-deps>=0.5.2')
+    requires.append('py-deps>=0.5.3')
 else:
-    requires.append('py-deps[memcache]>=0.5.2')
+    requires.append('py-deps[memcache]>=0.5.3')
 
 extras_require = {
     'reST': ['Sphinx'],

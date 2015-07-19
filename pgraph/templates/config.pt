@@ -21,11 +21,13 @@ $(function(){
                 }, 3000, pkg_name, version, json.task);
                 break;
             case 404:
+            case 500:
                 console.log(json.descr);
                 show_msg(json.descr, "danger");
                 break;
             default:
-                console.log('error: not handling case.');
+                console.log('error: not handling any errors.');
+                show_msg('not handling any errors.', "danger");
                 break;
             }
         });
