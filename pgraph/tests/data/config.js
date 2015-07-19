@@ -26,7 +26,7 @@ $(function(){
                 show_msg(json.descr, "danger");
                 break;
             default:
-                console.log('error: not handling case.');
+                console.log('error: not handling any errors.');
                 show_msg('not handling any errors.', "danger");
                 break;
             }
