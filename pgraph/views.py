@@ -50,7 +50,8 @@ class GraphViews(object):
             result = data.draw('linkdraw',
                                decode_type='json',
                                disable_time=True,
-                               disable_descr=True)
+                               disable_descr=True,
+                               link_prefix='/graph')
             result['status'] = 200
         else:
             if task_id:
