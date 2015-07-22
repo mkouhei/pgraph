@@ -15,6 +15,7 @@ def main(global_config, **settings):
     config.add_route('config', '/linkdraw/config/{pkg}/{version}')
     config.add_route('linkdraw', '/api/linkdraw/{pkg}/{version}')
     config.add_route('graph', '/graph/{pkg}/{version}')
+    config.add_route('graph_latest', '/graph/{pkg}')
     config.add_route('search', '/search')
     config.add_route('example', '/example')
     config.scan()

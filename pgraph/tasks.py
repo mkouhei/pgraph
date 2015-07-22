@@ -45,6 +45,11 @@ def search(pkg_name):
     return deps.search(pkg_name)
 
 
+def latest_version(pkg_name):
+    """Retrieve latest version of package."""
+    return deps.latest_version(pkg_name)
+
+
 def result(task_id):
     """Retrieve the result of task."""
     # pylint: disable=too-many-function-args

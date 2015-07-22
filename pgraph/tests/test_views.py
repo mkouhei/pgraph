@@ -61,16 +61,27 @@ class GraphFunctionalTests(unittest.TestCase):
 
     def test_path_error(self):
         """unit test of graph."""
-        res = self.testapp.get('/graph/foo', status=404)
+        res = self.testapp.get('/graph/foo/bar/baz', status=404)
         self.assertIn(b'404 Not Found', res.body)
 
-    def test_graph_fail(self):
+    def test_graph_not_found(self):
+        """unit test of graph.
+
+        But linkdraw do nothing when the config json is null.
+        """
+        res = self.testapp.get('/graph/hoge', status=200)
+        self.assertIn(b'Graph of &quot;hoge&quot;', res.body)
+        self.assertNotIn(b'glyphicon-tag', res.body)
+
+    def test_graph_pkg_broken(self):
         """unit test of graph.
 
         But linkdraw do nothing when the config json is null.
         """
         res = self.testapp.get('/graph/foo/.1', status=200)
         self.assertIn(b'Graph of &quot;foo&quot;', res.body)
+        self.assertIn(b'glyphicon-tag', res.body)
+        self.assertIn(b'<span>.1</span>', res.body)
 
     @patch('pgraph.tasks.gen_dependency.delay')
     def test_api(self, _mock):

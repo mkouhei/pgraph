@@ -93,6 +93,17 @@ class GraphViews(object):
                                      link=link)
         return self.meta
 
+    @view_config(route_name='graph_latest', renderer='templates/graph.pt')
+    def graph_latest(self):
+        """drawing graph."""
+        pkg_name = self.request.matchdict['pkg']
+        version = tasks.latest_version(pkg_name)
+        link = 'https://pypi.python.org/pypi/{0}/{1}'.format(pkg_name, version)
+        self.meta['pkg_name'] = pkg_name
+        self.meta['base_pkg'] = dict(version=version,
+                                     link=link)
+        return self.meta
+
     @view_config(route_name='search', renderer='templates/search.pt')
     def search(self):
         """search package."""
