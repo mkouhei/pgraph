@@ -1,6 +1,12 @@
 History
 =======
 
+0.4.5 (2015-07-22)
+------------------
+
+* Adds latest_version method, display latest version package.
+* Applies override node link with link_prefix.
+
 0.4.4 (2015-07-19)
 ------------------
 
