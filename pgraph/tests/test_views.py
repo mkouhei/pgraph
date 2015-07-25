@@ -102,5 +102,5 @@ class GraphFunctionalTests(unittest.TestCase):
 
     def test_example(self):
         """unit test of example redirect."""
-        res = self.testapp.get('/example', status=302)
-        self.assertTrue('/graph/pgraph/' in res.location)
+        res = self.testapp.get('/graph/pgraph', status=200)
+        self.assertIn(b'Graph of &quot;pgraph&quot;', res.body)

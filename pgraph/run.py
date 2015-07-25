@@ -17,6 +17,5 @@ def main(global_config, **settings):
     config.add_route('graph', '/graph/{pkg}/{version}')
     config.add_route('graph_latest', '/graph/{pkg}')
     config.add_route('search', '/search')
-    config.add_route('example', '/example')
     config.scan()
     return config.make_wsgi_app()
