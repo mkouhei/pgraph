@@ -1,6 +1,12 @@
 History
 =======
 
+0.4.6 (2015-07-27)
+------------------
+
+* Uses static_path instead of static_url.
+* Changes example pathname.
+
 0.4.5 (2015-07-22)
 ------------------
 
