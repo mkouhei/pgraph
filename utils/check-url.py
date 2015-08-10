@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""Meckerel custom metric."""
 import sys
 import time
 import requests
 from datetime import datetime
 
 
-def dispatch_app():
+def dispatch_app(args):
     """Dispatch heroku app."""
+    delta = round(24 / len(args))
     hour = datetime.now().hour
-    if 0 <= hour < 8:
-        app = 'pgraph-a'
-    elif 8 <= hour < 16:
-        app = 'pgraph-b'
-    else:
-        app = 'pgraph-c'
+    for i in range(len(args)):
+        if delta * i <= hour < delta * (i + 1):
+            app = args[i]
+            break
+        else:
+            app = args[-1]
     return app
 
 
@@ -35,8 +37,11 @@ def epoch_now():
 
 
 def main():
+    if len(sys.argv) == 1:
+        print('[usage] {0} target-app [...]'.format(sys.argv[0]))
+        sys.exit(1)
     print('# mackerel-agent-plugin')
-    rc, reason = check_status(dispatch_app())
+    rc, reason = check_status(dispatch_app(sys.argv[1:]))
     print('{0}\t{1}\t{2}'.format('pgraph', rc, epoch_now()))
     sys.exit(0)
 
