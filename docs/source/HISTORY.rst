@@ -1,6 +1,13 @@
 History
 =======
 
+0.4.7 (2015-08-15)
+------------------
+
+* Changes setting SVG size from window InnerWidth, InnerHeight.
+* Changes Sphinx theme to sphinx_rtd_theme.
+* Adds mackerel metric plugin.
+
 0.4.6 (2015-07-27)
 ------------------
 
