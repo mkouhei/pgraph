@@ -1,5 +1,13 @@
 $(function(){
 
+    if (window.matchMedia('screen and (min-width:768px)').matches) {
+	   var svg_width = window.innerWidth * 0.7;
+       var svg_height = window.innerHeight * 0.8;
+    } else {
+        var svg_width = window.innerWidth * 0.9;
+        var svg_height = window.innerHeight * 0.8;
+	}
+
     var load_linkdraw = function(pkg_name, version, task_id, loading_msg) {
         if (task_id == null) {
             var url = "/api/linkdraw/" + pkg_name + "/" + version;
@@ -58,8 +66,8 @@ $(function(){
             "positionSave": false,
             //"zoom": false,
             //"drag": false,
-            "width": 800,
-            "height": 600,
+            "width": svg_width,
+            "height": svg_height,
             "interval":0
         });
     };
