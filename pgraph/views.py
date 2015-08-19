@@ -2,6 +2,8 @@
 """pgraph.views module."""
 from pyramid.renderers import get_renderer
 from pyramid.view import view_config
+from pyramid.httpexceptions import HTTPInternalServerError
+from xmlrpclib import ProtocolError
 from py_deps.exceptions import InvalidMetadata
 from pgraph import __project__, __version__, __author__, __repo__, READTHEDOCS
 from pgraph import tasks
@@ -96,7 +98,10 @@ class GraphViews(object):
     def graph_latest(self):
         """drawing graph."""
         pkg_name = self.request.matchdict['pkg']
-        version = tasks.latest_version(pkg_name)
+        try:
+            version = tasks.latest_version(pkg_name)
+        except (ConnectionRefusedError, ProtocolError) as exc:
+            raise HTTPInternalServerError('PyPI: {}'.format(exc))
         link = 'https://pypi.python.org/pypi/{0}/{1}'.format(pkg_name, version)
         self.meta['pkg_name'] = pkg_name
         self.meta['base_pkg'] = dict(version=version,
@@ -108,5 +113,8 @@ class GraphViews(object):
         """search package."""
         pkg_name = self.request.GET.get('pkg_name')
         self.meta['pkg_name'] = pkg_name
-        self.meta['results'] = tasks.search(pkg_name)
-        return self.meta
+        try:
+            self.meta['results'] = tasks.search(pkg_name)
+            return self.meta
+        except (ConnectionRefusedError, ProtocolError) as exc:
+            raise HTTPInternalServerError('PyPI: {}'.format(exc))
