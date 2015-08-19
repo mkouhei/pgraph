@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """pgraph.views module."""
 from pyramid.renderers import get_renderer
-from pyramid.view import view_config
+from pyramid.view import view_config, notfound_view_config
 from py_deps.exceptions import InvalidMetadata, BackendFailure
 from pgraph import __project__, __version__, __author__, __repo__, READTHEDOCS
 from pgraph import tasks
@@ -118,4 +118,13 @@ class GraphViews(object):
         self.meta['title'] = self.request.response.status
         self.meta['reason'] = 'PyPI: {}'.format(
             self.request.exception.args[0].strerror)
+        return self.meta
+
+    @notfound_view_config(renderer='templates/error.pt')
+    def notfound(self):
+        """Not found error page."""
+        self.request.response.status = '404 Not Found'
+        self.meta['title'] = self.request.response.status
+        self.meta['reason'] = "The resource '{}' could not be found.".format(
+            self.request.exception.args[0])
         return self.meta
