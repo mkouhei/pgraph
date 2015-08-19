@@ -1,6 +1,14 @@
 History
 =======
 
+0.4.8 (2015-08-19)
+------------------
+
+* Changes custom 404 not found pages.
+* Closes #4, #5 error handlings 503 errors.
+* Fixes INTERNALERROR occurs when run the tox.
+* Changes mackerel-agent-plugin script for proxy.
+
 0.4.7 (2015-08-15)
 ------------------
 
