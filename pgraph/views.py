@@ -2,7 +2,7 @@
 """pgraph.views module."""
 from pyramid.renderers import get_renderer
 from pyramid.view import view_config
-from py_deps.exceptions import InvalidMetadata
+from py_deps.exceptions import InvalidMetadata, BackendFailure
 from pgraph import __project__, __version__, __author__, __repo__, READTHEDOCS
 from pgraph import tasks
 
@@ -109,4 +109,13 @@ class GraphViews(object):
         pkg_name = self.request.GET.get('pkg_name')
         self.meta['pkg_name'] = pkg_name
         self.meta['results'] = tasks.search(pkg_name)
+        return self.meta
+
+    @view_config(context=BackendFailure, renderer='templates/error.pt')
+    def failed_backend(self):
+        """backend failure error page."""
+        self.request.response.status = '500 Internal Server Error'
+        self.meta['title'] = self.request.response.status
+        self.meta['reason'] = 'PyPI: {}'.format(
+            self.request.exception.args[0].strerror)
         return self.meta
