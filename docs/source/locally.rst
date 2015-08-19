@@ -44,12 +44,6 @@ How to run things locally
 
    .. code-block:: shell
 
-      (venv)$ easy_install pgraph
-
-   or
-
-   .. code-block:: shell
-
       (venv)$ pip install --no-use-wheel pgraph
 
    .. warning::
