@@ -20,9 +20,12 @@ def dispatch_app(args):
     return app
 
 
-def check_status(app):
+def check_status(app=None, url=None):
     """Check status."""
-    url = 'http://{0}.herokuapp.com'.format(app)
+    if url is None:
+        url = 'http://{0}.herokuapp.com'.format(app)
+    else:
+        app = 'proxy'
     resp = requests.get(url)
     if 200 == resp.status_code:
         rc = 1
@@ -38,11 +41,13 @@ def epoch_now():
 
 def main():
     if len(sys.argv) == 1:
-        print('[usage] {0} target-app [...]'.format(sys.argv[0]))
+        print('[usage] {0} proxy_url target-app [...]'.format(sys.argv[0]))
         sys.exit(1)
     print('# mackerel-agent-plugin')
-    rc, reason = check_status(dispatch_app(sys.argv[1:]))
-    print('{0}\t{1}\t{2}'.format('pgraph', rc, epoch_now()))
+    rc, reason = check_status(app=dispatch_app(sys.argv[2:]))
+    print('{0}\t{1}\t{2}'.format('pgraph.upstream', rc, epoch_now()))
+    rc, reason = check_status(url=sys.argv[1])
+    print('{0}\t{1}\t{2}'.format('pgraph.proxy', rc, epoch_now()))
     sys.exit(0)
 
 
