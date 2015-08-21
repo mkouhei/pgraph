@@ -1,7 +1,7 @@
 $(function(){
 
     if (window.matchMedia('screen and (min-width:768px)').matches) {
-	   var svg_width = window.innerWidth * 0.7;
+	   var svg_width = window.innerWidth * 0.65;
        var svg_height = window.innerHeight * 0.8;
     } else {
         var svg_width = window.innerWidth * 0.9;
