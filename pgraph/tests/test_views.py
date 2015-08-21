@@ -100,7 +100,9 @@ class GraphFunctionalTests(unittest.TestCase):
             data = fobj.read()
         self.assertEqual(data.encode('utf-8'), res.body)
 
-    def test_example(self):
+    @patch('pgraph.tasks.latest_version')
+    def test_example(self, _mock):
         """unit test of example redirect."""
+        _mock.return_value = 'Graph &quot;pgraph&quot;'
         res = self.testapp.get('/graph/pgraph', status=200)
         self.assertIn(b'Graph of &quot;pgraph&quot;', res.body)
