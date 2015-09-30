@@ -34,7 +34,7 @@ class Tox(TestCommand):
 
 
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Framework :: Pyramid",
     "License :: OSI Approved :: "
