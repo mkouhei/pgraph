@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """pgraph.tests module."""
 import os
+import sys
 import unittest
 import json
 from pyramid import testing
@@ -64,14 +65,31 @@ class GraphFunctionalTests(unittest.TestCase):
         res = self.testapp.get('/graph/foo/bar/baz', status=404)
         self.assertIn(b'404 Not Found', res.body)
 
-    def test_graph_not_found(self):
-        """unit test of graph.
+    if sys.version_info < (3, 0):
+        @patch('xmlrpclib.ServerProxy')
+        def test_graph_not_found(self, _mock):
+            """unit test of graph.
 
-        But linkdraw do nothing when the config json is null.
-        """
-        res = self.testapp.get('/graph/hoge', status=200)
-        self.assertIn(b'Graph of &quot;hoge&quot;', res.body)
-        self.assertNotIn(b'glyphicon-tag', res.body)
+            But linkdraw do nothing when the config json is null.
+            """
+            client_mock = _mock.return_value
+            client_mock.package_releases.return_value = None
+            res = self.testapp.get('/graph/hoge', status=200)
+            self.assertIn(b'Graph of &quot;hoge&quot;', res.body)
+            self.assertNotIn(b'glyphicon-tag', res.body)
+
+    else:
+        @patch('xmlrpc.client.ServerProxy')
+        def test_graph_not_found_py3(self, _mock):
+            """unit test of graph.
+
+            But linkdraw do nothing when the config json is null.
+            """
+            client_mock = _mock.return_value
+            client_mock.package_releases.return_value = None
+            res = self.testapp.get('/graph/hoge', status=200)
+            self.assertIn(b'Graph of &quot;hoge&quot;', res.body)
+            self.assertNotIn(b'glyphicon-tag', res.body)
 
     def test_graph_pkg_broken(self):
         """unit test of graph.
