@@ -1,10 +1,20 @@
 # -*- coding: utf-8 -*-
 """pgraph.views module."""
+import sys
+import pkg_resources
 from pyramid.renderers import get_renderer
 from pyramid.view import view_config, notfound_view_config
 from py_deps.exceptions import InvalidMetadata, BackendFailure
 from pgraph import __project__, __version__, __author__, __repo__, READTHEDOCS
 from pgraph import tasks
+
+
+def get_ver(pkg_name):
+    """package version."""
+    if 'PyPy' in sys.version and pkg_name == 'pylibmc':
+        return ''
+    else:
+        return pkg_resources.get_distribution(pkg_name).version
 
 
 class GraphViews(object):
@@ -17,6 +27,11 @@ class GraphViews(object):
         renderer = get_renderer('templates/layout.pt')
         self.layout = renderer.implementation().macros['layout']
         self.meta = dict(project=__project__,
+                         depver={'python': sys.version.split()[0],
+                                 'py_deps': get_ver('py-deps'),
+                                 'pylibmc': get_ver('pylibmc'),
+                                 'celery': get_ver('celery'),
+                                 'pyramid': get_ver('pyramid')},
                          version=__version__,
                          author=__author__,
                          repo=__repo__,
