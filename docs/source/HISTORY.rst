@@ -1,6 +1,14 @@
 History
 =======
 
+0.5.0 (2015-10-09)
+------------------
+
+* Supports Python 3.5.
+* Adds showing version of running environments.
+* Adjust svg_width for PC web brawser.
+* Fixes unit test graph_not_found.
+
 0.4.8 (2015-08-19)
 ------------------
 
