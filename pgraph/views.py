@@ -18,7 +18,6 @@ def get_ver(pkg_name):
 
 
 class GraphViews(object):
-
     """Graph view class."""
 
     def __init__(self, request):
