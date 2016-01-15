@@ -1,2 +1,3 @@
 [MESSAGES CONTROL]
-#disable=
+disable=redefined-variable-type
+

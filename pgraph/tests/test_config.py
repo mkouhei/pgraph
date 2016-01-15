@@ -2,6 +2,7 @@
 """pgraph.tests.test_config module."""
 import sys
 import unittest
+# pylint: disable=wrong-import-order
 from pgraph import config
 if sys.version_info < (3, 0):
     # pylint: disable=no-name-in-module,import-error
