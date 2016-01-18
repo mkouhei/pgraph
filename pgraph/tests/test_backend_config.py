@@ -3,7 +3,6 @@
 import sys
 import unittest
 if sys.version_info < (3, 0):
-    # pylint: disable=no-name-in-module,import-error
     from test.test_support import EnvironmentVarGuard
 else:
     from test.support import EnvironmentVarGuard

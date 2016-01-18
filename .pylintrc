@@ -1,3 +1,8 @@
-[MESSAGES CONTROL]
-disable=redefined-variable-type
+[MASTER]
+ignore=setup.py,docs/source/conf.py,utils,runapp.py
 
+[MESSAGES CONTROL]
+disable=
+    redefined-variable-type,
+    import-error,
+    no-name-in-module

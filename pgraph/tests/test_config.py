@@ -5,7 +5,6 @@ import unittest
 # pylint: disable=wrong-import-order
 from pgraph import config
 if sys.version_info < (3, 0):
-    # pylint: disable=no-name-in-module,import-error
     from test.test_support import EnvironmentVarGuard
 else:
     from test.support import EnvironmentVarGuard

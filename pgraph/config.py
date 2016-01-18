@@ -3,7 +3,6 @@
 import os
 import sys
 if sys.version_info < (3, 0):
-    # pylint: disable=import-error
     import ConfigParser as configparser
 else:
     import configparser
