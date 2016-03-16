@@ -30,7 +30,7 @@ How to run things locally
 
    .. code-block:: shell
 
-      $ pyvenv /path/to/venv
+      $ virtualenv /path/to/venv
       $ . /path/to/venv/bin/activate
 
 5. Installing pgraph.
