@@ -39,12 +39,6 @@
         </div>
         
         <div class="collapse navbar-collapse" id="navbar-h">
-          
-          <!-- main menu
-          <ul class="nav navbar-nav">
-            <li><a></a></li>
-          </ul>-->
-          
           <form tal:condition="python: request.path is not '/'"
                 class="navbar-form navbar-left" action="/search">
             <div class="form-group">
