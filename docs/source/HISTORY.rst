@@ -1,6 +1,19 @@
 History
 =======
 
+0.5.1 (2016-04-09)
+------------------
+
+* Fixes view template layout.
+* Removes backward compatibilities under IE 9.
+* Updates JavaScript libraries.
+* Updates locally instead of pyvenv.
+* Applies pytest-remove-stale-bytecode.
+* Applies pytest-pylint.
+* Ignores redefined-variable-type, wrong-import-order.
+* Applies Python 3.5 on travis-ci.
+* Fixes pep257 D211 violations.
+
 0.5.0 (2015-10-09)
 ------------------
 
