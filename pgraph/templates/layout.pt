@@ -68,7 +68,7 @@
             <li><a href="${repo}/issues" title="Issues">Issues</a></li>
             <li><a href="${docs}" title="docs">Docs</a></li>
           </ul>
-          <p>&copy; Copyright 2015, ${author}.
+          <p>&copy; Copyright 2015-2016, ${author}.
             Powered by
             <a href="https://www.python.org/">Python ${depver.python}</a>,
             <a href="https://github.com/mkouhei/py-deps">py-deps ${depver.py_deps}</a>,
