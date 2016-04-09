@@ -68,7 +68,13 @@
             <li><a href="${docs}" title="docs">Docs</a></li>
           </ul>
           <p>&copy; Copyright 2015, ${author}.
-            Powered by <a href="https://www.python.org/">Python ${depver.python}</a>, <a href="https://github.com/mkouhei/py-deps">py-deps ${depver.py_deps}</a>, <a href="http://www.celeryproject.org/">Celery ${depver.celery}</a>, <span tal:condition="depver.pylibmc"><a href="http://sendapatch.se/projects/pylibmc/">pylibmc ${depver.pylibmc}</a>, </span><a href="http://docs.pylonsproject.org/en/latest/docs/pyramid.html">Pyramid ${depver.pyramid}</a> and <a href="https://github.com/mtoshi/linkdraw/wiki">Linkdraw</a>.</p>
+            Powered by
+            <a href="https://www.python.org/">Python ${depver.python}</a>,
+            <a href="https://github.com/mkouhei/py-deps">py-deps ${depver.py_deps}</a>,
+            <a href="http://www.celeryproject.org/">Celery ${depver.celery}</a>,
+            <span tal:condition="depver.pylibmc"><a href="http://sendapatch.se/projects/pylibmc/">pylibmc ${depver.pylibmc}</a>,</span>
+            <a href="http://docs.pylonsproject.org/en/latest/docs/pyramid.html">Pyramid ${depver.pyramid}</a> and
+            <a href="https://github.com/mtoshi/linkdraw/wiki">Linkdraw</a>.</p>
         </div>
       </footer>
     </div>
