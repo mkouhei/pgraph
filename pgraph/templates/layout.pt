@@ -20,7 +20,8 @@
     <!-- Custom styles for this scaffold -->
     <link href="${request.static_path('pgraph:static/theme.css')}" rel="stylesheet">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+    <!-- D3.js gt 3.1.10 have issues moving each node with dragging and dropping. -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.1.10/d3.min.js"></script>
     <script src="${request.static_path('pgraph:static/linkdraw/src/js/linkdraw.js')}"></script>
   </head>
 
