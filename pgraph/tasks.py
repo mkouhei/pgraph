@@ -30,14 +30,15 @@ def read_cache(pkg_name, version):
                            username=MEMCACHED_USERNAME,
                            password=MEMCACHED_PASSWORD)
     if _cache.read_data((pkg_name, version)):
-        return Package(pkg_name,
-                       version=version,
-                       cache_name=CACHE_NAME,
-                       servers=MEMCACHED_SERVERS,
-                       username=MEMCACHED_USERNAME,
-                       password=MEMCACHED_PASSWORD)
+        package_data = Package(pkg_name,
+                               version=version,
+                               cache_name=CACHE_NAME,
+                               servers=MEMCACHED_SERVERS,
+                               username=MEMCACHED_USERNAME,
+                               password=MEMCACHED_PASSWORD)
     else:
-        return
+        package_data = None
+    return package_data
 
 
 def search(pkg_name):

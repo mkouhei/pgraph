@@ -28,9 +28,9 @@ if os.path.basename(CONFIG_FILE) == 'heroku.ini':
                                             'broker_connection_timeout')
     BROKER_HEARTBEAT = CONF.getint('celery',
                                    'broker_heartbeat')
-    MEMCACHED_SERVERS = (os.environ.get(CONF.get('cache', 'servers')) and
-                         [os.environ.get(CONF.get('cache', 'servers'))] or
-                         None)
+    MEMCACHED_SERVERS = ([os.environ.get(CONF.get('cache', 'servers'))]
+                         if os.environ.get(CONF.get('cache', 'servers'))
+                         else None)
     MEMCACHED_USERNAME = os.environ.get(CONF.get('cache', 'username'))
     MEMCACHED_PASSWORD = os.environ.get(CONF.get('cache', 'password'))
 
@@ -47,9 +47,8 @@ else:
     CELERY_RESULT_BACKEND = CONF.get('celery', 'celery_result_backend')
     BROKER_URL = CONF.get('celery', 'broker_url')
 
-    MEMCACHED_SERVERS = (CONF.get('cache', 'servers') and
-                         [CONF.get('cache', 'servers')] or
-                         None)
+    MEMCACHED_SERVERS = ([CONF.get('cache', 'servers')]
+                         if CONF.get('cache', 'servers') else None)
     MEMCACHED_USERNAME = CONF.get('cache', 'username')
     MEMCACHED_PASSWORD = CONF.get('cache', 'password')
 
@@ -57,8 +56,6 @@ else:
                'BROKER_URL']
 
 # Pickle instead of Memcached
-CACHE_NAME = CONF.get('cache', 'cache_name')
-
-if not CACHE_NAME:
-    # pylint: disable=redefined-variable-type
-    CACHE_NAME = 'pgraph.cache'
+CACHE_NAME = (CONF.get('cache', 'cache_name')
+              if CONF.get('cache', 'cache_name')
+              else 'pgraph.cache')
