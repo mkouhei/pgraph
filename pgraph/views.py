@@ -12,9 +12,10 @@ from pgraph import tasks
 def get_ver(pkg_name):
     """package version."""
     if 'PyPy' in sys.version and pkg_name == 'pylibmc':
-        return ''
+        version = ''
     else:
-        return pkg_resources.get_distribution(pkg_name).version
+        version = pkg_resources.get_distribution(pkg_name).version
+    return version
 
 
 class GraphViews(object):
