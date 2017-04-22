@@ -56,8 +56,6 @@ else:
                'BROKER_URL']
 
 # Pickle instead of Memcached
-CACHE_NAME = CONF.get('cache', 'cache_name')
-
-if not CACHE_NAME:
-    # pylint: disable=redefined-variable-type
-    CACHE_NAME = 'pgraph.cache'
+CACHE_NAME = (CONF.get('cache', 'cache_name')
+              if CONF.get('cache', 'cache_name')
+              else 'pgraph.cache')
