@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# pylint: skip-file
 #
 # pgraph documentation build configuration file, created by
 # sphinx-quickstart on Thu Oct 23 23:37:38 2014.

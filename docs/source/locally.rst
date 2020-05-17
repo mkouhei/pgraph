@@ -30,7 +30,7 @@ How to run things locally
 
    .. code-block:: shell
 
-      $ virtualenv /path/to/venv
+      $ python -m venv /path/to/venv
       $ . /path/to/venv/bin/activate
 
 5. Installing pgraph.
@@ -38,16 +38,7 @@ How to run things locally
    .. code-block:: shell
 
       (venv)$ cd /path/to/pgraph
-      (venv)$ python setup.py develop
-
-   or
-
-   .. code-block:: shell
-
-      (venv)$ pip install --no-use-wheel pgraph
-
-   .. warning::
-      Not use ``pip install pgraph``. See also "`Known issue with the packages that depends on py-deps <http://py-deps.readthedocs.org/en/latest/README.html#known-issue-with-the-packages-that-depends-on-py-deps>`_".
+      (venv)$ pip install -e . -e .[development]
 
 
 6. Running celery worker.
