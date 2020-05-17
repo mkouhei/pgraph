@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
 """pgraph.tests.test_config module."""
-import sys
 import unittest
-if sys.version_info < (3, 0):
-    from test.test_support import EnvironmentVarGuard
-else:
-    from test.support import EnvironmentVarGuard
+from test.support import EnvironmentVarGuard
 
 
 class BackednConfigTests(unittest.TestCase):
@@ -16,7 +12,7 @@ class BackednConfigTests(unittest.TestCase):
         """Load configuration for Heroku."""
         with EnvironmentVarGuard() as env:
             env.set('CONFIG_FILE', 'heroku.ini')
-            from pgraph import backend_config as bconfig
+            from pgraph import backend_config as bconfig  # pylint: disable=import-outside-toplevel
             self.assertTrue(hasattr(bconfig, 'CELERY_RESULT_BACKEND'))
             self.assertTrue(hasattr(bconfig, 'BROKER_URL'))
             self.assertTrue(hasattr(bconfig, 'CELERY_SEND_EVENTS'))

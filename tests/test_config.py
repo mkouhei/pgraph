@@ -1,13 +1,9 @@
 # -*- coding: utf-8 -*-
 """pgraph.tests.test_config module."""
-import sys
 import unittest
 # pylint: disable=wrong-import-order
 from pgraph import config
-if sys.version_info < (3, 0):
-    from test.test_support import EnvironmentVarGuard
-else:
-    from test.support import EnvironmentVarGuard
+from test.support import EnvironmentVarGuard
 
 
 class ConfigTests(unittest.TestCase):
