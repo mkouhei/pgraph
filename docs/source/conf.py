@@ -49,7 +49,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'pgraph'
-copyright = '2015, Kouhei Maeda <mkouhei@palmtb.net>'
+copyright = '2015-2020, Kouhei Maeda <mkouhei@palmtb.net>'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
