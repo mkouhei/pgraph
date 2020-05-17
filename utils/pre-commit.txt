@@ -6,5 +6,7 @@ cd $rootdir
     rm -rf _build dist *.egg-info
     find ./ -name '*.pyc' -delete
     tox
-    python setup.py check -r
+    python setup.py sdist
+    twine check dist/*
+    which rst2html5.py && python setup.py --long-description | rst2html5.py > /dev/null
 )
