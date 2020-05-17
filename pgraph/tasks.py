@@ -15,12 +15,13 @@ APP.config_from_object(celeryconfig)
 @APP.task
 def gen_dependency(pkg_name, version):
     """Generate dependencies."""
-    return Package(pkg_name,
-                   version=version,
-                   cache_name=CACHE_NAME,
-                   servers=MEMCACHED_SERVERS,
-                   username=MEMCACHED_USERNAME,
-                   password=MEMCACHED_PASSWORD)
+    pkg = Package(pkg_name,
+                  version=version,
+                  cache_name=CACHE_NAME,
+                  servers=MEMCACHED_SERVERS,
+                  username=MEMCACHED_USERNAME,
+                  password=MEMCACHED_PASSWORD)
+    return pkg.draw(draw_type='linkdraw', link_prefix='/graph')
 
 
 def read_cache(pkg_name, version):

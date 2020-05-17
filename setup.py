@@ -58,27 +58,21 @@ long_description = (
 
 requires = ['pyramid',
             'pyramid_chameleon',
-            'pyramid_debugtoolbar',
-            'waitress',
+            'gunicorn',
+            'setuptools>=46.0, <47.0',
             'celery',
-            'webtest',
-            'mock']
-if sys.version_info < (3, 3):
-    requires.append('funcsigs')
-
-if hasattr(sys, 'pypy_version_info'):
-    requires.append('py-deps>=0.5.5')
-else:
-    requires.append('py-deps[memcache]>=0.5.5')
+            'pip>=20.0, <21.0'
+            'py-deps==1.0.0']
 
 extras_require = {
+    'development': ['pyramid_debugtoolbar',
+                    'webtest',
+                    'mock'],
     'reST': ['Sphinx'],
-    'heroku': ['CherryPy',
-               'PasteScript',
-               'PasteDeploy',
+    'heroku': ['PasteDeploy',
                'sqlalchemy',
-               'psycopg2',
                'pylibmc',
+               'psycopg2',
                'newrelic']}
 if os.environ.get('READTHEDOCS', None):
     extras_require['reST'].append('recommonmark')

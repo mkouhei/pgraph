@@ -10,15 +10,12 @@ from pgraph import tasks
 
 
 def get_ver(pkg_name):
-    """package version."""
-    if 'PyPy' in sys.version and pkg_name == 'pylibmc':
-        version = ''
-    else:
-        version = pkg_resources.get_distribution(pkg_name).version
+    """Get package version."""
+    version = pkg_resources.get_distribution(pkg_name).version
     return version
 
 
-class GraphViews(object):
+class GraphViews:
     """Graph view class."""
 
     def __init__(self, request):
@@ -40,12 +37,12 @@ class GraphViews(object):
     # pylint: disable=unused-argument
     @view_config(route_name='index', renderer='templates/index.pt')
     def index(self):
-        """index view."""
+        """Index view."""
         return self.meta
 
     @view_config(route_name='config', renderer='templates/config.pt')
     def config(self):
-        """Configuration for Linkdraw."""
+        """Configure for Linkdraw."""
         self.request.response.content_type = 'application/javascript'
         pkg_name = self.request.matchdict['pkg']
         self.meta['pkg_name'] = pkg_name
@@ -61,11 +58,7 @@ class GraphViews(object):
         self.meta['pkg_name'] = pkg_name
         data = tasks.read_cache(pkg_name, version)
         if data:
-            result = data.draw('linkdraw',
-                               decode_type='json',
-                               disable_time=True,
-                               disable_descr=True,
-                               link_prefix='/graph')
+            result = data.draw('linkdraw', link_prefix='/graph')
             result['status'] = 200
         else:
             if task_id:
@@ -79,10 +72,7 @@ class GraphViews(object):
             else:
                 if job.successful():
                     try:
-                        result = job.result.draw('linkdraw',
-                                                 decode_type='json',
-                                                 disable_time=True,
-                                                 disable_descr=True)
+                        result = job.result
                         result['status'] = 200
                     except InvalidMetadata:
                         result = {'status': 500,
@@ -98,7 +88,7 @@ class GraphViews(object):
 
     @view_config(route_name='graph', renderer='templates/graph.pt')
     def graph(self):
-        """drawing graph."""
+        """Drawing graph."""
         pkg_name = self.request.matchdict['pkg']
         version = self.request.matchdict['version']
         link = 'https://pypi.python.org/pypi/{0}/{1}'.format(pkg_name, version)
@@ -109,7 +99,7 @@ class GraphViews(object):
 
     @view_config(route_name='graph_latest', renderer='templates/graph.pt')
     def graph_latest(self):
-        """drawing graph."""
+        """Drawing latest version graph."""
         pkg_name = self.request.matchdict['pkg']
         version = tasks.latest_version(pkg_name)
         link = 'https://pypi.python.org/pypi/{0}/{1}'.format(pkg_name, version)
@@ -120,7 +110,7 @@ class GraphViews(object):
 
     @view_config(route_name='search', renderer='templates/search.pt')
     def search(self):
-        """search package."""
+        """Search package."""
         pkg_name = self.request.GET.get('pkg_name')
         self.meta['pkg_name'] = pkg_name
         self.meta['results'] = tasks.search(pkg_name)
@@ -128,7 +118,7 @@ class GraphViews(object):
 
     @view_config(context=BackendFailure, renderer='templates/error.pt')
     def failed_backend(self):
-        """backend failure error page."""
+        """Backend failure error page."""
         self.request.response.status = '500 Internal Server Error'
         self.meta['title'] = self.request.response.status
         self.meta['reason'] = 'PyPI: {}'.format(

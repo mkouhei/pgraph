@@ -2,10 +2,7 @@
 """pgraph.config module."""
 import os
 import sys
-if sys.version_info < (3, 0):
-    import ConfigParser as configparser
-else:
-    import configparser
+import configparser
 
 
 def load():
@@ -19,6 +16,6 @@ def load():
         sys.stderr.write("Can't read file: {0}\n\n".format(config_file))
         sys.exit(2)
 
-    config = configparser.SafeConfigParser()
+    config = configparser.ConfigParser()
     config.read(config_file)
     return config, config_file
