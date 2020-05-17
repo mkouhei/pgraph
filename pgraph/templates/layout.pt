@@ -40,7 +40,7 @@
         </div>
         
         <div class="collapse navbar-collapse" id="navbar-h">
-          <form tal:condition="python: request.path is not '/'"
+          <form tal:condition="python: request.path != '/'"
                 class="navbar-form navbar-left" action="/search">
             <div class="form-group">
               <input name="pkg_name" type="text" class="form-control"

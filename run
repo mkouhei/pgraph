@@ -1,4 +1,4 @@
 #!/bin/sh -e
 
-python setup.py develop
-python runapp.py
+pip install -e . -e .[heroku]
+gunicorn --paste heroku.ini -b 0.0.0.0:5000 --log-level info

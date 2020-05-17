@@ -94,8 +94,9 @@ Use PostgreSQL as Celery backend
 
    .. code-block:: shell
 
-      $ python setup.py --version
-      $ pip install --no-use-wheel -r requirements.txt -r heroku_requirements.txt
+      $ python -m venv /path/to/heroku-venv
+      $ . /path/to/heroku-venv
+      $ pip install -e . -e .[heroku]
 
 4. Running celery worker.
 
@@ -136,7 +137,7 @@ Use RabbigMQ as Celery backend
    .. code-block:: shell
 
       $ python setup.py --version
-      $ pip install --no-use-wheel -r requirements.txt -r heroku_requirements.txt
+      $ pip install -e . -e .[heroku]
 
 4. Running celery worker.
 
