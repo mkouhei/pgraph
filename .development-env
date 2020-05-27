@@ -1,0 +1,5 @@
+export CONFIG_FILE=heroku.ini
+export DATABASE_URL=postgres://pgraph:passw0rd@localhost:5432/pgraph
+export MEMCACHEDCLOUD_SERVERS=127.0.0.1:11211
+export MEMCACHEDCLOUD_USERNAME=''
+export MEMCACHEDCLOUD_PASSWORD=''
