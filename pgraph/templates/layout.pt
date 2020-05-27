@@ -72,13 +72,13 @@
             Powered by
             <a href="https://www.python.org/">Python ${depver.python}</a>,
             <a href="https://github.com/mkouhei/py-deps">py-deps ${depver.py_deps}</a>,
-            <a href="http://www.celeryproject.org/">Celery ${depver.celery}</a>,
-            <span tal:condition="depver.pylibmc"><a href="http://sendapatch.se/projects/pylibmc/">pylibmc ${depver.pylibmc}</a>,</span>
-            <a href="http://docs.pylonsproject.org/en/latest/docs/pyramid.html">Pyramid ${depver.pyramid}</a> and
+            <a href="https://docs.celeryproject.org/en/latest/index.html">Celery ${depver.celery}</a>,
+            <span tal:condition="depver.pylibmc"><a href="https://sendapatch.se/projects/pylibmc/">pylibmc ${depver.pylibmc}</a>,</span>
+            <a href="https://docs.pylonsproject.org/en/latest/docs/pyramid.html">Pyramid ${depver.pyramid}</a> and
             <a href="https://github.com/mtoshi/linkdraw/wiki">Linkdraw</a>.</p>
         </div>
       </footer>
     </div>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </body>
 </html>
