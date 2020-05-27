@@ -1,4 +1,3 @@
 #!/bin/sh -e
 
-pip install -e . -e .[heroku]
-gunicorn --paste heroku.ini -b 0.0.0.0:5000 --log-level info
+newrelic-admin run-program python runapp.py

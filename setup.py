@@ -54,7 +54,6 @@ long_description = (
 
 requires = ['pyramid',
             'pyramid_chameleon',
-            'gunicorn',
             'setuptools>=46.0, <47.0',
             'celery',
             'pip>=20.0, <21.0',
