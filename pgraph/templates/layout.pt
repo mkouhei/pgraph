@@ -14,14 +14,13 @@
     <title>Python package dependencies graph</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
 
     <!-- Custom styles for this scaffold -->
     <link href="${request.static_path('pgraph:static/theme.css')}" rel="stylesheet">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <!-- D3.js gt 3.1.10 have issues moving each node with dragging and dropping. -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.1.10/d3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
     <script src="${request.static_path('pgraph:static/linkdraw/src/js/linkdraw.js')}"></script>
   </head>
 
@@ -49,7 +48,7 @@
             <button class="btn btn-default" id="search-addon"><icon class="glyphicon glyphicon-search"/></button>
           </form>
           <ul class="nav navbar-nav navbar-right">          
-            <li><a href="/graph/${project}" title="example">Example</a></li>
+            <li><a href="/graph/${project}" title="example">Example (pgraph dependencies graph)</a></li>
           </ul>
         </div>
       </div>
@@ -68,17 +67,17 @@
             <li><a href="${repo}/issues" title="Issues">Issues</a></li>
             <li><a href="${docs}" title="docs">Docs</a></li>
           </ul>
-          <p>&copy; Copyright 2015-2016, ${author}.
+          <p>&copy; Copyright 2015-2020, ${author}.
             Powered by
             <a href="https://www.python.org/">Python ${depver.python}</a>,
             <a href="https://github.com/mkouhei/py-deps">py-deps ${depver.py_deps}</a>,
-            <a href="http://www.celeryproject.org/">Celery ${depver.celery}</a>,
-            <span tal:condition="depver.pylibmc"><a href="http://sendapatch.se/projects/pylibmc/">pylibmc ${depver.pylibmc}</a>,</span>
-            <a href="http://docs.pylonsproject.org/en/latest/docs/pyramid.html">Pyramid ${depver.pyramid}</a> and
+            <a href="https://docs.celeryproject.org/en/latest/index.html">Celery ${depver.celery}</a>,
+            <span tal:condition="depver.pylibmc"><a href="https://sendapatch.se/projects/pylibmc/">pylibmc ${depver.pylibmc}</a>,</span>
+            <a href="https://docs.pylonsproject.org/en/latest/docs/pyramid.html">Pyramid ${depver.pyramid}</a> and
             <a href="https://github.com/mtoshi/linkdraw/wiki">Linkdraw</a>.</p>
         </div>
       </footer>
     </div>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </body>
 </html>
