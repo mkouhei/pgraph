@@ -1,6 +1,18 @@
 History
 =======
 
+1.0.1 (2020-05-27)
+------------------
+
+* Fixes runner
+
+1.0.0 (2020-05-17)
+------------------
+
+* Changes to use py-deps 1.0.0.
+* Updates dependencies.
+* Support Python version 3.8 only.
+
 0.5.1 (2016-04-09)
 ------------------
 
