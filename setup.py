@@ -57,7 +57,7 @@ requires = ['pyramid',
             'setuptools>=46.0, <47.0',
             'celery',
             'pip>=20.0, <21.0',
-            'py-deps==1.0.0']
+            'py-deps>=1.0.0']
 
 extras_require = {
     'development': ['pyramid_debugtoolbar',
