@@ -4,6 +4,6 @@
 __project__ = 'pgraph'
 __author__ = 'Kouhei Maeda'
 __email__ = 'mkouhei@palmtb.net'
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 __repo__ = 'https://github.com/mkouhei/pgraph'
 READTHEDOCS = 'https://pgraph.readthedocs.org'

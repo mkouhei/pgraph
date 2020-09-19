@@ -1,6 +1,13 @@
 History
 =======
 
+1.0.3 (2020-09-19)
+------------------
+
+* Supports wheel.
+* Removes deprecated pytest options.
+* Updates py-deps dependency.
+
 1.0.2 (2020-05-27)
 ------------------
 
